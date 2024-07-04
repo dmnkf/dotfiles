@@ -153,17 +153,12 @@ lvim.plugins = {
     build = './kitty/install-kittens.bash'
   },
   {
-    'mrjones2014/legendary.nvim',
-    priority = 10000,
-    lazy = false,
-  },
-  {
     'gsuuon/tshjkl.nvim',
     config = true
   },
   {
     "chrisgrieser/nvim-spider", lazy = true
-  },
+  }
 }
 
 vim.list_extend(lvim.builtin.cmp.sources, {
@@ -192,3 +187,7 @@ copilot.setup {
 local opts = { noremap = true, silent = true }
 vim.api.nvim_set_keymap("n", "<c-s>", "<cmd>lua require('copilot.suggestion').toggle_auto_trigger()<CR>", opts)
 
+
+
+-- Enable core plugins
+lvim.builtin.project.active = true
