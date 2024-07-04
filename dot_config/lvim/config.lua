@@ -148,7 +148,10 @@ lvim.plugins = {
       { '<leader>qm', ':lua require"nabla".toggle_virt()<cr>', desc = 'toggle [m]ath equations' },
     },
   },
-
+  {
+    'mrjones2014/smart-splits.nvim',
+    build = './kitty/install-kittens.bash'
+  }
 }
 
 vim.list_extend(lvim.builtin.cmp.sources, {
