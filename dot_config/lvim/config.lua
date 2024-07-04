@@ -151,6 +151,11 @@ lvim.plugins = {
   {
     'mrjones2014/smart-splits.nvim',
     build = './kitty/install-kittens.bash'
+  },
+  {
+    'mrjones2014/legendary.nvim',
+    priority = 10000,
+    lazy = false,
   }
 }
 
