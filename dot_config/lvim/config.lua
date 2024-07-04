@@ -160,7 +160,10 @@ lvim.plugins = {
   {
     'gsuuon/tshjkl.nvim',
     config = true
-  }
+  },
+  {
+    "chrisgrieser/nvim-spider", lazy = true
+  },
 }
 
 vim.list_extend(lvim.builtin.cmp.sources, {
