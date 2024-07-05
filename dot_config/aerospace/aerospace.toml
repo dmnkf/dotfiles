@@ -1,0 +1,248 @@
+# Place a copy of this config to ~/.aerospace.toml
+# After that, you can edit ~/.aerospace.toml to your liking
+
+# Feel free to omit keys that you don't use in your config.
+# If the key is absent in your config the default value is taken from this config
+
+# You can use it to add commands that run after login to macOS user session.
+# 'start-at-login' needs to be 'true' for 'after-login-command' to work
+# Available commands: https://nikitabobko.github.io/AeroSpace/commands.html
+after-login-command = []
+
+# You can use it to add commands that run after AeroSpace startup.
+# 'after-startup-command' is run after 'after-login-command'
+# Available commands : https://nikitabobko.github.io/AeroSpace/commands.html
+after-startup-command = []
+
+# Start AeroSpace at login
+start-at-login = true
+
+# See: https://nikitabobko.github.io/AeroSpace/guide.html#layouts
+# The 'accordion-padding' specifies the size of accordion padding
+# You can set 0 to disable the padding feature
+accordion-padding = 0
+
+# Possible values: tiles|accordion
+default-root-container-layout = 'accordion'
+
+# Possible values: horizontal|vertical|auto
+# 'auto' means: wide monitor (anything wider than high) gets horizontal orientation,
+#               tall monitor (anything higher than wide) gets vertical orientation
+default-root-container-orientation = 'auto'
+
+# Gaps between windows (inner-*) and between monitor edges (outer-*).
+# Possible values:
+# - Constant:     gaps.outer.top = 8
+# - Per monitor:  gaps.outer.top = [{ monitor.main = 16 }, { monitor."some-pattern" = 32 }, 24]
+#                 In this example, 24 is a default value when there is no match.
+#                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
+#                 See: https://nikitabobko.github.io/AeroSpace/guide.html#assign-workspaces-to-monitors
+gaps.inner.horizontal = 0
+gaps.inner.vertical =   0
+gaps.outer.left =       0
+gaps.outer.bottom =     0
+gaps.outer.top =        0
+gaps.outer.right =      0
+
+# 'main' binding mode declaration
+# See: https://nikitabobko.github.io/AeroSpace/guide.html#binding-modes
+# 'main' binding mode must be always presented
+
+# All possible keys:
+# - Letters.        a, b, c, ..., z
+# - Numbers.        0, 1, 2, ..., 9
+# - Keypad numbers. keypad0, keypad1, keypad2, ..., keypad9
+# - F-keys.         f1, f2, ..., f20
+# - Special keys.   minus, equal, period, comma, slash, backslash, quote, semicolon, backtick,
+#                   leftSquareBracket, rightSquareBracket, space, enter, esc, backspace, tab
+# - Keypad special. keypadClear, keypadDecimalMark, keypadDivide, keypadEnter, keypadEqual,
+#                   keypadMinus, keypadMultiply, keypadPlus
+# - Arrows.         left, down, up, right
+
+# All possible modifiers: cmd, cmd-alt-ctrl, ctrl, shift
+
+# All possible commands: https://nikitabobko.github.io/AeroSpace/commands.html
+
+# You can uncomment this line to open up terminal with cmd-alt-ctrl + enter shortcut
+# See: https://nikitabobko.github.io/AeroSpace/commands.html#exec-and-forget
+# cmd-alt-ctrl-enter = 'exec-and-forget open -n /System/Applications/Utilities/Terminal.app'
+
+# See: https://nikitabobko.github.io/AeroSpace/commands.html#layout
+# Reference: https://github.com/i3/i3/blob/next/etc/config
+enable-normalization-flatten-containers = false
+enable-normalization-opposite-orientation-for-nested-containers = false
+
+[mode.main.binding]
+cmd-alt-ctrl-enter = 'exec-and-forget open -n /Applications/kitty.app' 
+
+cmd-alt-ctrl-j = 'focus left'
+cmd-alt-ctrl-k = 'focus down'
+cmd-alt-ctrl-l = 'focus up'
+cmd-alt-ctrl-semicolon = 'focus right'
+
+cmd-alt-ctrl-shift-j = 'move left'
+cmd-alt-ctrl-shift-k = 'move down'
+cmd-alt-ctrl-shift-l = 'move up'
+cmd-alt-ctrl-shift-semicolon = 'move right'
+
+cmd-alt-ctrl-h = 'split horizontal'
+cmd-alt-ctrl-v = 'split vertical'
+
+cmd-alt-ctrl-f = 'fullscreen'
+
+cmd-alt-ctrl-s = 'layout v_accordion' # 'layout stacking' in i3
+cmd-alt-ctrl-w = 'layout h_accordion' # 'layout tabbed' in i3
+cmd-alt-ctrl-e = 'layout tiles horizontal vertical' # 'layout toggle split' in i3
+
+cmd-alt-ctrl-shift-space = 'layout floating tiling' # 'floating toggle' in i3
+
+# Not supported, because this command is redundant in AeroSpace mental model.
+# See: https://nikitabobko.github.io/AeroSpace/guide.html#floating-windows
+#cmd-alt-ctrl-space = 'focus toggle_tiling_floating'
+
+# `focus parent`/`focus child` are not yet supported, and it's not clear whether they
+# should be supported at all https://github.com/nikitabobko/AeroSpace/issues/5
+# cmd-alt-ctrl-a = 'focus parent'
+
+cmd-alt-ctrl-1 = 'workspace 1'
+cmd-alt-ctrl-2 = 'workspace 2'
+cmd-alt-ctrl-3 = 'workspace 3'
+cmd-alt-ctrl-4 = 'workspace 4'
+cmd-alt-ctrl-5 = 'workspace 5'
+cmd-alt-ctrl-6 = 'workspace 6'
+cmd-alt-ctrl-7 = 'workspace 7'
+cmd-alt-ctrl-8 = 'workspace 8'
+cmd-alt-ctrl-9 = 'workspace 9'
+cmd-alt-ctrl-0 = 'workspace 10'
+
+cmd-alt-ctrl-shift-1 = ['move-node-to-workspace 1', 'workspace 1']
+cmd-alt-ctrl-shift-2 = ['move-node-to-workspace 2', 'workspace 2']
+cmd-alt-ctrl-shift-3 = ['move-node-to-workspace 3', 'workspace 3']
+cmd-alt-ctrl-shift-4 = ['move-node-to-workspace 4', 'workspace 4']
+cmd-alt-ctrl-shift-5 = ['move-node-to-workspace 5', 'workspace 5']
+cmd-alt-ctrl-shift-6 = ['move-node-to-workspace 6', 'workspace 6']
+cmd-alt-ctrl-shift-7 = ['move-node-to-workspace 7', 'workspace 7']
+cmd-alt-ctrl-shift-8 = ['move-node-to-workspace 8', 'workspace 8']
+cmd-alt-ctrl-shift-9 = ['move-node-to-workspace 9', 'workspace 9']
+cmd-alt-ctrl-shift-0 = ['move-node-to-workspace 10', 'workspace 10']
+
+cmd-alt-ctrl-shift-c = 'reload-config'
+
+cmd-alt-ctrl-r = 'mode resize'
+
+[mode.resize.binding]
+h = 'resize width -50'
+j = 'resize height +50'
+k = 'resize height -50'
+l = 'resize width +50'
+enter = 'mode main'
+esc = 'mode main'
+
+
+[workspace-to-monitor-force-assignment]
+1 = ['built-in', 'secondary', 'LG.*', 1]
+2 = ['secondary', 'zowie.*', 3]
+3 = ['LG.*', 'main']
+4 = ['secondary', 'zowie.*', 3]
+5 = ['Sidecar Display (AirPlay)', 'secondary', 'zowie.*', 3]
+6 = ['Sidecar Display (AirPlay)', 'secondary', 'zowie.*', 3]
+7 = ['built-in', 'secondary', 'LG.*', 1]
+8 = ['LG.*', 'main']
+9 = ['secondary', 'zowie.*', 3]
+
+# automation 
+
+# Browser workspace 1 
+[[on-window-detected]]
+if.during-aerospace-startup = true                     # Run the callback only if the window detected during AeroSpace startup
+if.app-id = 'company.thebrowser.Browser'
+run = 'move-node-to-workspace 1'
+
+[[on-window-detected]]
+if.app-id = 'org.mozilla.firefox'
+run = 'move-node-to-workspace 1'
+
+# Terminal and Notes workspace 2
+[[on-window-detected]]
+if.app-id = 'com.apple.Terminal'
+run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+if.app-id = 'net.kovidgoyal.kitty'
+run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+if.app-id = 'md.obsidian'
+run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+if.app-id = 'com.postmanlabs.mac'
+run = 'move-node-to-workspace 9'
+
+[[on-window-detected]]
+if.app-id = 'org.zotero.zotero'
+run = 'move-node-to-workspace z'
+
+# coding 
+[[on-window-detected]]
+if.app-name-regex-substring = 'jetbrains'
+run = 'move-node-to-workspace 3'
+
+[[on-window-detected]]
+if.app-id = 'com.microsoft.VSCode'
+run = 'move-node-to-workspace 3'
+
+[[on-window-detected]]
+if.app-id = 'com.jetbrains.intellij'
+run = 'move-node-to-workspace 3'
+
+[[on-window-detected]]
+if.app-id = 'com.jetbrains.pycharm'
+run = 'move-node-to-workspace 3'
+
+[[on-window-detected]]
+if.app-id = 'com.jetbrains.dataspell'
+run = 'move-node-to-workspace 3'
+
+[[on-window-detected]]
+if.app-id = 'com.neovide.neovide'
+run = 'move-node-to-workspace 3'
+
+[[on-window-detected]]
+if.app-id = 'com.jetbrains.cwm.guest'
+run = 'move-node-to-workspace 3'
+
+
+# Communication workspace 4
+[[on-window-detected]]
+if.app-id = 'im.beeper'
+run = 'move-node-to-workspace 4'
+
+[[on-window-detected]]
+if.app-id = 'com.microsoft.teams2'
+run = 'move-node-to-workspace 4'
+
+[[on-window-detected]]
+if.app-id = 'com.hnc.Discord'
+run = 'move-node-to-workspace 4'
+
+[[on-window-detected]]
+if.app-id = 'com.tinyspeck.slackmacgap'
+run = 'move-node-to-workspace 4'
+
+# Calendar workspace 5
+[[on-window-detected]]
+if.window-title-regex-substring = 'morgen'
+run = 'move-node-to-workspace 5'
+
+
+# Music workspace 6
+[[on-window-detected]]
+if.app-id = 'com.spotify.client'
+run = 'move-node-to-workspace 6'
+
+[[on-window-detected]]
+if.app-id = 'com.bitwarden.desktop'
+run = 'layout floating'
+
+
