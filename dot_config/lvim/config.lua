@@ -210,7 +210,13 @@ lvim.plugins = {
       vim.keymap.set("n", "<space>rF", "<cmd>IronFocus<cr>")
       vim.keymap.set("n", "<space>rh", "<cmd>IronHide<cr>")
     end,
-  }
+  },
+  {
+    "ChristianChiarulli/swenv.nvim"
+  },
+  {
+    "stevearc/dressing.nvim"
+  },
 }
 
 vim.list_extend(lvim.builtin.cmp.sources, {
