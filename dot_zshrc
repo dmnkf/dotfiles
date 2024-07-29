@@ -32,3 +32,4 @@ export MODULAR_HOME="/Users/dmnk/.modular"
 export PATH="/Users/dmnk/.modular/pkg/packages.modular.com_mojo/bin:$PATH"
 
 export PATH=$PATH:/Users/dmnk/.spicetify
+source "$HOME/.rye/env"
