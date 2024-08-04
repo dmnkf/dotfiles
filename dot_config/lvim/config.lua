@@ -260,5 +260,5 @@ lvim.builtin.which_key.mappings["t"] = {
 }
 
 -- Enable core plugins
--- lvim.builtin.project.active = true
+lvim.builtin.project.active = true
 
