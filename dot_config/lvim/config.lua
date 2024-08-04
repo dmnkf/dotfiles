@@ -217,6 +217,12 @@ lvim.plugins = {
   {
     "stevearc/dressing.nvim"
   },
+  {
+    "coffebar/transfer.nvim",
+    lazy = true,
+    cmd = { "TransferInit", "DiffRemote", "TransferUpload", "TransferDownload", "TransferDirDiff", "TransferRepeat" },
+    opts = {},
+  },
 }
 
 vim.list_extend(lvim.builtin.cmp.sources, {
