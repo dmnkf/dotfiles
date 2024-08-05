@@ -262,4 +262,10 @@ lvim.builtin.which_key.mappings["t"] = {
 
 -- Enable core plugins
 lvim.builtin.project.active = true
+lvim.builtin.project.silent_chdir = false
 
+lvim.builtin.nvimtree.setup.respect_buf_cwd = true
+lvim.builtin.nvimtree.setup.update_focused_file =  {
+    enable = true,
+    update_root = true
+  }
