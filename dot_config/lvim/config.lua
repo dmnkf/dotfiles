@@ -223,6 +223,7 @@ lvim.plugins = {
     cmd = { "TransferInit", "DiffRemote", "TransferUpload", "TransferDownload", "TransferDirDiff", "TransferRepeat" },
     opts = {},
   },
+  { "Olical/conjure" }
 }
 
 vim.list_extend(lvim.builtin.cmp.sources, {
