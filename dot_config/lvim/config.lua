@@ -255,7 +255,7 @@ vim.api.nvim_set_keymap("n", "<c-s>", "<cmd>lua require('copilot.suggestion').to
 lvim.builtin.which_key.mappings["t"] = {
   name = "+Terminal",
   f = { "<cmd>ToggleTerm<cr>", "Floating terminal" },
-  v = { "<cmd>2ToggleTerm size=50 direction=vertical<cr>", "Split vertical" },
+  v = { "<cmd>2ToggleTerm size=100 direction=vertical<cr>", "Split vertical" },
   h = { "<cmd>2ToggleTerm size=30 direction=horizontal<cr>", "Split horizontal" },
 }
 
