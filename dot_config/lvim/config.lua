@@ -223,7 +223,14 @@ lvim.plugins = {
     cmd = { "TransferInit", "DiffRemote", "TransferUpload", "TransferDownload", "TransferDirDiff", "TransferRepeat" },
     opts = {},
   },
-  { "Olical/conjure" }
+  { "Olical/conjure" },
+  {
+    "quarto-dev/quarto-nvim",
+    dependencies = {
+      "jmbuhr/otter.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
+  },
 }
 
 vim.list_extend(lvim.builtin.cmp.sources, {
