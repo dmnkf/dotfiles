@@ -385,7 +385,6 @@ lvim.plugins = {
 
 vim.list_extend(lvim.builtin.cmp.sources, {
   { name = "otter" },
-
   { name = "copilot"},
 })
 
