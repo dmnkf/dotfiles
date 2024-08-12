@@ -4,6 +4,7 @@
 -- Discord: https://discord.com/invite/Xb9B4Ny
 
 
+vim.cmd('set autochdir')
 -- 
 vim.g.maplocalleader = ";"
 -- lvim.log.level = "debug"
@@ -148,19 +149,14 @@ lvim.plugins = {
     end,
   },
 
-  {
+
+  { -- requires plugins in lua/plugins/treesitter.lua and lua/plugins/lsp.lua
+    -- for complete functionality (language features)
     'quarto-dev/quarto-nvim',
     ft = { 'quarto' },
     dev = false,
-    opts = {
-      codeRunner = {
-        enabled = true,
-        default_method = 'molten',
-      },
-    },
+    opts = {},
     dependencies = {
-      -- for language features in code cells
-      -- configured in lua/plugins/lsp.lua and
       -- added as a nvim-cmp source in lua/plugins/completion.lua
       'jmbuhr/otter.nvim',
     },
@@ -237,7 +233,9 @@ lvim.plugins = {
       'jmbuhr/otter.nvim',
     },
   },
-
+  {
+     "jmbuhr/cmp-pandoc-references"
+  },
   { -- directly open ipynb files as quarto docuements
     -- and convert back behind the scenes
     'GCBallesteros/jupytext.nvim',
@@ -292,8 +290,9 @@ lvim.plugins = {
       ]]
 
       vim.g.slime_target = 'kitty'
-      vim.g.slime_no_mappings = true
-      vim.g.slime_python_ipython = 1
+      -- vim.g.slime_no_mappings = true
+      -- vim.g.slime_bracketed_paste = 1
+      -- vim.g.slime_python_ipython = 1
     end,
     config = function()
       vim.g.slime_input_pid = false
@@ -485,20 +484,29 @@ lvim.plugins = {
         require("venv-selector").setup()
      end,
   },
+  {
+    'jmbuhr/telescope-zotero.nvim',
+    dependencies = {
+      { 'kkharji/sqlite.lua' },
+    },
+    opts = {},
+    config = function ()
+    end
+  },
 }
 
 vim.list_extend(lvim.builtin.cmp.sources, {
   { name = "otter" },
   { name = "copilot"},
-  { name = "conjure"}
+  { name = "pandoc_references"}
 })
-
 
 -- COPILOT
 local ok, copilot = pcall(require, "copilot")
 if not ok then
 return
 end
+
 
 copilot.setup {
   suggestion = {
@@ -511,6 +519,14 @@ copilot.setup {
   },
 }
 
+
+-- TELESCOPE 
+lvim.builtin.telescope.on_config_done = function(telescope)
+  telescope.load_extension "zotero"
+end
+
+lvim.builtin.which_key.mappings["sz"] = { ":Telescope zotero<cr>", "[z]otero" }
+
 -- TERMINAL 
 lvim.builtin.which_key.mappings["t"] = {
   name = "+Terminal",
@@ -519,8 +535,164 @@ lvim.builtin.which_key.mappings["t"] = {
   h = { "<cmd>2ToggleTerm size=30 direction=horizontal<cr>", "Split horizontal" },
 }
 
+
 local opts = { noremap = true, silent = true }
 vim.api.nvim_set_keymap("n", "<c-s>", "<cmd>lua require('copilot.suggestion').toggle_auto_trigger()<CR>", opts)
+
+
+-- QUARTO
+local util = require 'lspconfig.util'
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+local lspconfig = require 'lspconfig'
+lspconfig.marksman.setup {
+  capabilities = capabilities,
+  filetypes = { 'markdown', 'quarto' },
+  root_dir = util.root_pattern('.git', '.marksman.toml', '_quarto.yml'),
+}
+
+require('luasnip.loaders.from_vscode').lazy_load()
+require('luasnip.loaders.from_vscode').lazy_load { paths = { vim.fn.stdpath 'config' .. '/snips' } }
+
+local luasnip = require 'luasnip'
+luasnip.filetype_extend('quarto', { 'markdown' })
+
+local lsp_flags = {
+  allow_incremental_sync = true,
+  debounce_text_changes = 150,
+}
+lspconfig.pyright.setup {
+  capabilities = capabilities,
+  flags = lsp_flags,
+  settings = {
+    python = {
+      analysis = {
+        autoSearchPaths = true,
+        useLibraryCodeForTypes = true,
+        diagnosticMode = 'workspace',
+      },
+    },
+  },
+  root_dir = function(fname)
+    return util.root_pattern('.git', 'setup.py', 'setup.cfg', 'pyproject.toml', 'requirements.txt')(fname) or util.path.dirname(fname)
+  end,
+}
+lspconfig.cssls.setup {
+  capabilities = capabilities,
+  flags = lsp_flags,
+}
+
+lspconfig.html.setup {
+  capabilities = capabilities,
+  flags = lsp_flags,
+}
+
+lspconfig.emmet_language_server.setup {
+  capabilities = capabilities,
+  flags = lsp_flags,
+}
+
+lspconfig.yamlls.setup {
+  capabilities = capabilities,
+  flags = lsp_flags,
+  settings = {
+    yaml = {
+      schemaStore = {
+        enable = true,
+        url = '',
+      },
+    },
+  },
+}
+lspconfig.jsonls.setup {
+  capabilities = capabilities,
+  flags = lsp_flags,
+}
+
+lspconfig.vimls.setup {
+  capabilities = capabilities,
+  flags = lsp_flags,
+}
+
+local function get_quarto_resource_path()
+  local function strsplit(s, delimiter)
+    local result = {}
+    for match in (s .. delimiter):gmatch('(.-)' .. delimiter) do
+      table.insert(result, match)
+    end
+    return result
+  end
+
+  local f = assert(io.popen('quarto --paths', 'r'))
+  local s = assert(f:read '*a')
+  f:close()
+  return strsplit(s, '\n')[2]
+end
+
+local lua_library_files = vim.api.nvim_get_runtime_file('', true)
+local lua_plugin_paths = {}
+local resource_path = get_quarto_resource_path()
+if resource_path == nil then
+  vim.notify_once 'quarto not found, lua library files not loaded'
+else
+  table.insert(lua_library_files, resource_path .. '/lua-types')
+  table.insert(lua_plugin_paths, resource_path .. '/lua-plugin/plugin.lua')
+end
+
+local function send_cell()
+  if vim.b['quarto_is_r_mode'] == nil then
+    vim.fn['slime#send_cell']()
+    return
+  end
+  if vim.b['quarto_is_r_mode'] == true then
+    vim.g.slime_python_ipython = 0
+    local is_python = require('otter.tools.functions').is_otter_language_context 'python'
+    if is_python and not vim.b['reticulate_running'] then
+      vim.fn['slime#send']('reticulate::repl_python()' .. '\r')
+      vim.b['reticulate_running'] = true
+    end
+    if not is_python and vim.b['reticulate_running'] then
+      vim.fn['slime#send']('exit' .. '\r')
+      vim.b['reticulate_running'] = false
+    end
+    vim.fn['slime#send_cell']()
+  end
+end
+
+
+vim.keymap.set('n', '<s-cr>', send_cell, { silent = true, noremap = true })
+vim.keymap.set('i', '<s-cr>', send_cell, { silent = true, noremap = true })
+
+
+
+
+-- TODO: this just doesn't work
+-- -- change the configuration when editing a python file
+-- vim.api.nvim_create_autocmd("BufEnter", {
+--   pattern = "*.py",
+--   callback = function(e)
+--     if string.match(e.file, ".otter.") then
+--       return
+--     end
+--     if require("molten.status").initialized() == "Molten" then
+--       vim.fn.MoltenUpdateOption("molten_virt_lines_off_by_1", false)
+--       vim.fn.MoltenUpdateOption("molten_virt_text_output", false)
+--     end
+--   end,
+-- })
+
+
+-- -- Undo those config changes when we go back to a markdown or quarto file
+-- vim.api.nvim_create_autocmd("BufEnter", {
+--   pattern = { "*.qmd", "*.md", "*.ipynb" },
+--   callback = function()
+--     if require("molten.status").initialized() == "Molten" then
+--       vim.fn.MoltenUpdateOption("molten_virt_lines_off_by_1", true)
+--       vim.fn.MoltenUpdateOption("molten_virt_text_output", true)
+--     end
+--   end,
+-- })
 
 
 local function new_terminal(lang)
@@ -665,100 +837,4 @@ lvim.builtin.nvimtree.setup.update_focused_file =  {
   }
 
 lvim.colorscheme = "tokyonight"
-
-local util = require 'lspconfig.util'
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-local lspconfig = require 'lspconfig'
-lspconfig.marksman.setup {
-  capabilities = capabilities,
-  filetypes = { 'markdown', 'quarto' },
-  root_dir = util.root_pattern('.git', '.marksman.toml', '_quarto.yml'),
-}
-
-require('luasnip.loaders.from_vscode').lazy_load()
-require('luasnip.loaders.from_vscode').lazy_load { paths = { vim.fn.stdpath 'config' .. '/snips' } }
-
-local luasnip = require 'luasnip'
-luasnip.filetype_extend('quarto', { 'markdown' })
-
-local lsp_flags = {
-  allow_incremental_sync = true,
-  debounce_text_changes = 150,
-}
-lspconfig.pyright.setup {
-  capabilities = capabilities,
-  flags = lsp_flags,
-  settings = {
-    python = {
-      analysis = {
-        autoSearchPaths = true,
-        useLibraryCodeForTypes = true,
-        diagnosticMode = 'workspace',
-      },
-    },
-  },
-  root_dir = function(fname)
-    return util.root_pattern('.git', 'setup.py', 'setup.cfg', 'pyproject.toml', 'requirements.txt')(fname) or util.path.dirname(fname)
-  end,
-}
-lspconfig.cssls.setup {
-  capabilities = capabilities,
-  flags = lsp_flags,
-}
-
-lspconfig.html.setup {
-  capabilities = capabilities,
-  flags = lsp_flags,
-}
-
-lspconfig.emmet_language_server.setup {
-  capabilities = capabilities,
-  flags = lsp_flags,
-}
-
-lspconfig.yamlls.setup {
-  capabilities = capabilities,
-  flags = lsp_flags,
-  settings = {
-    yaml = {
-      schemaStore = {
-        enable = true,
-        url = '',
-      },
-    },
-  },
-}
-lspconfig.jsonls.setup {
-  capabilities = capabilities,
-  flags = lsp_flags,
-}
-
--- TODO: this just doesn't work
--- -- change the configuration when editing a python file
--- vim.api.nvim_create_autocmd("BufEnter", {
---   pattern = "*.py",
---   callback = function(e)
---     if string.match(e.file, ".otter.") then
---       return
---     end
---     if require("molten.status").initialized() == "Molten" then
---       vim.fn.MoltenUpdateOption("molten_virt_lines_off_by_1", false)
---       vim.fn.MoltenUpdateOption("molten_virt_text_output", false)
---     end
---   end,
--- })
-
-
--- -- Undo those config changes when we go back to a markdown or quarto file
--- vim.api.nvim_create_autocmd("BufEnter", {
---   pattern = { "*.qmd", "*.md", "*.ipynb" },
---   callback = function()
---     if require("molten.status").initialized() == "Molten" then
---       vim.fn.MoltenUpdateOption("molten_virt_lines_off_by_1", true)
---       vim.fn.MoltenUpdateOption("molten_virt_text_output", true)
---     end
---   end,
--- })
 
