@@ -493,12 +493,32 @@ lvim.plugins = {
     config = function ()
     end
   },
+  -- {
+  --     'milanglacier/minuet-ai.nvim',
+  --     config = function()
+  --         require('minuet').setup {
+  --           provider_options = {
+  --             claude = {
+  --               max_tokens = 512,
+  --               model = 'claude-3-5-sonnet-20240620',
+  --               system = system,
+  --               few_shots = default_fewshots,
+  --               stream = true,
+  --               optional = {
+  --                   -- pass any additional parameters you want to send to claude request,
+  --                   -- e.g.
+  --                   -- stop_sequences = nil,
+  --               },
+  --           },
+  --         }
+  --     end
+  -- },
 }
-
 vim.list_extend(lvim.builtin.cmp.sources, {
   { name = "otter" },
   { name = "copilot"},
-  { name = "pandoc_references"}
+  { name = "pandoc_references"},
+  -- { name = 'minuet' }
 })
 
 -- COPILOT
