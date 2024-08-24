@@ -1,0 +1,73 @@
+"" Source your .vimrc
+"source ~/.vimrc
+
+"" -- Suggested options --
+" Show a few lines of context around the cursor. Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+set scrolloff=40
+set background=dark
+
+""" Plugins  --------------------------------
+set surround
+set multicursor
+set commentary
+set argtextobj
+set easymotion
+set textobj-entire
+set ReplaceWithRegister
+set exchange
+" Trying the new syntax
+Plug 'machakann/vim-highlightedyank'
+
+
+set clipboard+=unnamed
+set clipboard+=ideaput
+nnoremap \e :e ~/.ideavimrc<CR>
+map \r <Action>(JupyterRestartKernelRunAllAction)
+
+map q <Plug>(multicursor-ms/)
+map z <Plug>(multicursor-mca)
+map Z <Plug>(multicursor-mci)
+
+let mapleader=" "
+
+map f <Plug>(easymotion-s)
+map <leader>e <Plug>(easymotion-f)
+
+map <leader>d <Action>(Debug)
+map <leader>r <Action>(RenameElement)
+map <leader>c <Action>(Stop)
+map <leader>z <Action>(ToggleDistractionFreeMode)
+map <leader>t <Action>(ActivateTerminalToolWindow)
+map <leader>l <Action>(ReformatCode)
+map <leader>c <Action>(copilot.chat.show)
+map / <Action>(Find)
+
+map <leader>rr <Action>(Run)
+
+set ideajoin
+set idearefactormode=keep
+
+map <S-Space> <Action>(GotoNextError)
+map <leader>p <Action>(ManageRecentProjects)
+
+
+" remap ctrl + hjkl to jump between windows
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" Search
+set incsearch
+map <leader>a <Action>(GotoAction)
+map <leader>f <Action>(GotoFile)
+map <leader>d <Action>(GotoDeclaration)
+map gb <Action>(Back)
+map gf <Action>(Forward)
+
+nnoremap <leader>[ `[V`]<
+nnoremap <leader>] `[V`]>
+
+" Run
+map <leader>i ~hi
