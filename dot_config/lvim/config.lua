@@ -5,6 +5,7 @@
 
 
 vim.cmd('set autochdir')
+
 -- 
 vim.g.maplocalleader = ";"
 -- lvim.log.level = "debug"
@@ -233,9 +234,9 @@ lvim.plugins = {
       'jmbuhr/otter.nvim',
     },
   },
-  {
-     "jmbuhr/cmp-pandoc-references"
-  },
+  -- {
+  --    "jmbuhr/cmp-pandoc-references"
+  -- },
   { -- directly open ipynb files as quarto docuements
     -- and convert back behind the scenes
     'GCBallesteros/jupytext.nvim',
@@ -841,4 +842,16 @@ lvim.builtin.nvimtree.setup.update_focused_file =  {
   }
 
 lvim.colorscheme = "tokyonight"
+
+-- Configure `ruff-lsp`.
+-- See: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#ruff_lsp
+-- For the default config, along with instructions on how to customize the settings
+require('lspconfig').ruff_lsp.setup {
+  init_options = {
+    settings = {
+      -- Any extra CLI arguments for `ruff` go here.
+      args = {},
+    }
+  }
+}
 
