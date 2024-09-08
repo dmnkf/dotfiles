@@ -212,6 +212,13 @@ run = 'move-node-to-workspace 3'
 if.app-id = 'com.jetbrains.cwm.guest'
 run = 'move-node-to-workspace 3'
 
+[[on-window-detected]]
+if.app-id = 'dev.zed.Zed-Nightly'
+run = 'move-node-to-workspace 3'
+
+[[on-window-detected]]
+if.app-id = 'dev.zed.Zed'
+run = 'move-node-to-workspace 3'
 
 # Communication workspace 4
 [[on-window-detected]]
