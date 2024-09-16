@@ -224,6 +224,14 @@ run = 'move-node-to-workspace 3'
 if.app-id = 'dev.zed.Zed'
 run = 'move-node-to-workspace 3'
 
+[[on-window-detected]]
+if.app-id = 'com.visualstudio.code.oss'
+run = 'move-node-to-workspace 3'
+
+[[on-window-detected]]
+if.app-id = 'com.todesktop.230313mzl4w4u92'
+run = 'move-node-to-workspace 3'
+
 # Communication workspace 4
 [[on-window-detected]]
 if.app-id = 'im.beeper'
