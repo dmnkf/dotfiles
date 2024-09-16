@@ -1,0 +1,41 @@
+[
+  {
+    "context": "Editor && vim_mode == normal && !menu && !VimWaiting",
+    "bindings": {
+      "space r": ["task::Spawn", { "task_name": "run '$ZED_FILE'" }],
+    }
+  },
+  {
+    "context": "Editor && vim_mode == visual && !menu && !VimWaiting",
+    "bindings": {
+      "space r": ["task::Spawn", { "task_name": "execute selection" }],
+      "space l": "assistant::QuoteSelection",
+      "cmd-l": "assistant::QuoteSelection"
+    }
+  }, 
+  {
+    "context": "Editor && VimControl && !VimWaiting && !menu",
+    "bindings": {
+      "space o": "file_finder::Toggle",
+      "space t": "terminal_panel::ToggleFocus",
+      "space f": "file_finder::Toggle"
+    }
+  },
+  {
+    "bindings": {
+      "cmd-p": "command_palette::Toggle",
+      "cmd-l": "assistant::ToggleFocus",
+      "cmd-[": "pane::GoBack",
+      "cmd-]": "pane::GoForward",
+      "cmd-i": "assistant::InlineAssist"
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "escape": "terminal_panel::ToggleFocus",
+      "cmd-t": "workspace::NewTerminal"
+    }
+    
+  }
+]
