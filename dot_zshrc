@@ -28,3 +28,4 @@ export PATH=$PATH:/Users/dmnk/.spicetify
 source "$HOME/.rye/env"
 
 eval "$(starship init zsh)"
+export PATH="/opt/homebrew/opt/ansible@9/bin:$PATH"
