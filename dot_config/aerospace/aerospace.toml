@@ -183,6 +183,10 @@ run = 'move-node-to-workspace 9'
 if.app-id = 'org.zotero.zotero'
 run = 'move-node-to-workspace z'
 
+[[on-window-detected]]
+if.app-id = 'com.clickup.desktop-app'
+run = 'move-node-to-workspace c'
+
 # coding 
 [[on-window-detected]]
 if.app-name-regex-substring = 'jetbrains'
