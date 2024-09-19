@@ -36,6 +36,12 @@
       "escape": "terminal_panel::ToggleFocus",
       "cmd-t": "workspace::NewTerminal"
     }
-    
+  },
+  {
+    "context": "AssistantPanel",
+    "bindings": {
+      "cmd-n": "assistant::NewContext"
+    }
   }
+ 
 ]
