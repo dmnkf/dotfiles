@@ -29,3 +29,14 @@ source "$HOME/.rye/env"
 
 eval "$(starship init zsh)"
 export PATH="/opt/homebrew/opt/ansible@9/bin:$PATH"
+
+# bun completions
+[ -s "/Users/dmnk/.bun/_bun" ] && source "/Users/dmnk/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
