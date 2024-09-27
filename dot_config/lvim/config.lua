@@ -16,20 +16,26 @@ vim.g.python3_host_prog=vim.fn.expand("~/.virtualenvs/neovim/bin/python3")
 
 
 lvim.plugins = {
-  {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    event = "InsertEnter",
-    lazy = false
-  },
+    {
+      "supermaven-inc/supermaven-nvim",
+      config = function()
+        require("supermaven-nvim").setup({})
+      end,
+    },
+  -- {
+  --   "zbirenbaum/copilot.lua",
+  --   cmd = "Copilot",
+  --   event = "InsertEnter",
+  --   lazy = false
+  -- },
 
-  {
-    "zbirenbaum/copilot-cmp",
-    after = {"copilot.lua"},
-    config = function ()
-      require("copilot_cmp").setup()
-    end
-  },
+  -- {
+  --   "zbirenbaum/copilot-cmp",
+  --   after = {"copilot.lua"},
+  --   config = function ()
+  --     require("copilot_cmp").setup()
+  --   end
+  -- },
 
   {
       "vhyrro/luarocks.nvim",
@@ -517,28 +523,29 @@ lvim.plugins = {
 }
 vim.list_extend(lvim.builtin.cmp.sources, {
   { name = "otter" },
-  { name = "copilot"},
+  { name = "supermaven"},
+  -- { name = "copilot"},
   { name = "pandoc_references"},
   -- { name = 'minuet' }
 })
 
--- COPILOT
-local ok, copilot = pcall(require, "copilot")
-if not ok then
-return
-end
+-- -- COPILOT
+-- local ok, copilot = pcall(require, "copilot")
+-- if not ok then
+-- return
+-- end
 
 
-copilot.setup {
-  suggestion = {
-    keymap = {
-      accept = "<c-l>",
-      next = "<c-j>",
-      prev = "<c-k>",
-      dismiss = "<c-h>",
-    },
-  },
-}
+-- copilot.setup {
+--   suggestion = {
+--     keymap = {
+--       accept = "<c-l>",
+--       next = "<c-j>",
+--       prev = "<c-k>",
+--       dismiss = "<c-h>",
+--     },
+--   },
+-- }
 
 
 -- TELESCOPE 
