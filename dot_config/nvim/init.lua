@@ -13,15 +13,69 @@ local function map(mode, lhs, rhs, opts)
     vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
--- require("lazy").setup({
--- 	{ import = "user.plugins_notvscode", cond = (function() return not vim.g.vscode end) },
--- 	{ import = "user.plugins_always",    cond = true },
--- 	{ import = "user.plugins_vscode",    cond = (function() return vim.g.vscode end) },
--- })
 
--- Easymotion-like functionality (VSCode has its own implementation)
-map("n", "f", "<Cmd>call VSCodeNotify('vim-easymotion.easymotion')<CR>")
-map("n", "<leader>e", "<Cmd>call VSCodeNotify('vim-easymotion.easymotion')<CR>")
+-- Bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out, "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
+end
+vim.opt.rtp:prepend(lazypath)
+
+  -- "dial.nvim",
+  -- "flit.nvim",
+  -- "lazy.nvim",
+  -- "leap.nvim",
+  -- "mini.ai",
+  -- "mini.comment",
+  -- "mini.move",
+  -- "mini.pairs",
+  -- "mini.surround",
+  -- "nvim-treesitter",
+  -- "nvim-treesitter-textobjects",
+  -- "nvim-ts-context-commentstring",
+  -- "vim-repeat",
+  -- "yanky.nvim",
+require("lazy").setup({
+  {
+    "chrisgrieser/nvim-spider",
+    keys = {
+      {
+        "e",
+        "<cmd>lua require('spider').motion('e')<CR>",
+        mode = { "n", "o", "x" },
+      },
+      {
+        "b",
+        "<cmd>lua require('spider').motion('b')<CR>",
+        mode = { "n", "o", "x" },
+      },
+      {
+        "w",
+        "<cmd>lua require('spider').motion('w')<CR>",
+        mode = { "n", "o", "x" },
+      },
+    },
+  },
+  {  "gbprod/yanky.nvim" },
+
+  { "rlane/pounce.nvim" },
+
+
+})
+
+-- Pounce
+map("n", "f", "<cmd>Pounce<CR>")
+map("x", "f", "<cmd>Pounce<CR>")
 
 -- Debug, Rename, Stop, Toggle Distraction Free Mode
 map("n", "<leader>d", "<Cmd>call VSCodeNotify('workbench.action.debug.start')<CR>")
