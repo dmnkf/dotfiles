@@ -2,7 +2,7 @@
   {
     "context": "Editor && vim_mode == normal && !menu && !VimWaiting",
     "bindings": {
-      "space r": ["task::Spawn", { "task_name": "run '$ZED_FILE'" }],
+      "space r": ["task::Spawn", { "task_name": "Run python file" }],
     }
   },
   {
