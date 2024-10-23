@@ -6,6 +6,18 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "ssh_connections": [
+    {
+      "host": "AWS-Server",
+      "projects": [
+        {
+          "paths": [
+            "~/projects"
+          ]
+        }
+      ]
+    }
+  ],
   "features": {
     "inline_completion_provider": "supermaven"
   },
