@@ -75,15 +75,15 @@ enable-normalization-opposite-orientation-for-nested-containers = false
 [mode.main.binding]
 cmd-alt-ctrl-enter = 'exec-and-forget open -n /Applications/ghostty.app' 
 
-cmd-alt-ctrl-j = 'focus left'
-cmd-alt-ctrl-k = 'focus down'
-cmd-alt-ctrl-l = 'focus up'
-cmd-alt-ctrl-semicolon = 'focus right'
+cmd-alt-ctrl-h = 'focus left'
+cmd-alt-ctrl-j = 'focus down'
+cmd-alt-ctrl-k = 'focus up'
+cmd-alt-ctrl-l = 'focus right'
 
-cmd-alt-ctrl-shift-j = 'move left'
-cmd-alt-ctrl-shift-k = 'move down'
-cmd-alt-ctrl-shift-l = 'move up'
-cmd-alt-ctrl-shift-semicolon = 'move right'
+cmd-alt-ctrl-shift-h = 'move left'
+cmd-alt-ctrl-shift-j = 'move down'
+cmd-alt-ctrl-shift-k = 'move up'
+cmd-alt-ctrl-shift-l = 'move right'
 
 cmd-alt-ctrl-h = 'split horizontal'
 cmd-alt-ctrl-v = 'split vertical'
