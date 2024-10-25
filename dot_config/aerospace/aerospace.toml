@@ -85,9 +85,6 @@ cmd-alt-ctrl-shift-j = 'move down'
 cmd-alt-ctrl-shift-k = 'move up'
 cmd-alt-ctrl-shift-l = 'move right'
 
-cmd-alt-ctrl-\ = 'split horizontal'
-cmd-alt-ctrl-\- = 'split vertical'
-
 cmd-alt-ctrl-f = 'fullscreen'
 
 cmd-alt-ctrl-s = 'layout v_accordion' # 'layout stacking' in i3
