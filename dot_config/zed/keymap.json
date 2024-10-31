@@ -2,7 +2,7 @@
   {
     "context": "Editor && vim_mode == normal && !menu && !VimWaiting",
     "bindings": {
-      "space r": ["task::Spawn", { "task_name": "run '$ZED_FILE'" }],
+      "space r": ["task::Spawn", { "task_name": "run '$ZED_FILE'" }]
     }
   },
   {
@@ -27,7 +27,8 @@
       "cmd-l": "assistant::ToggleFocus",
       "cmd-[": "pane::GoBack",
       "cmd-]": "pane::GoForward",
-      "cmd-i": "assistant::InlineAssist"
+      "cmd-i": "assistant::InlineAssist",
+      "cmd-o": "file_finder::Toggle"
     }
   },
   {
