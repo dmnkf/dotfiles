@@ -125,6 +125,15 @@ cmd-alt-ctrl-shift-0 = ['move-node-to-workspace 10', 'workspace 10']
 
 cmd-alt-ctrl-shift-c = 'reload-config'
 
+cmd-alt-ctrl-semicolon = 'mode join'
+
+[mode.join.binding]
+esc = 'mode main'
+h = ['join-with left', 'mode main']
+j = ['join-with down', 'mode main']
+k = ['join-with up', 'mode main']
+l = ['join-with right', 'mode main']
+
 cmd-alt-ctrl-r = 'mode resize'
 
 [mode.resize.binding]
