@@ -728,138 +728,138 @@ local function new_terminal_shell()
   new_terminal '$SHELL'
 end
 
-local function get_otter_symbols_lang()
-  local otterkeeper = require'otter.keeper'
-  local main_nr = vim.api.nvim_get_current_buf()
-  local langs = {}
-  for i,l in ipairs(otterkeeper.rafts[main_nr].languages) do
-    langs[i] = i .. ': ' .. l
-  end
-  -- promt to choose one of langs
-  local i = vim.fn.inputlist(langs)
-  local lang = otterkeeper.rafts[main_nr].languages[i]
-  local params = {
-    textDocument = vim.lsp.util.make_text_document_params(),
-    otter = {
-      lang = lang
-    }
-  }
-  -- don't pass a handler, as we want otter to use it's own handlers
-  vim.lsp.buf_request(main_nr, ms.textDocument_documentSymbol, params, nil)
-end
+-- local function get_otter_symbols_lang()
+--   local otterkeeper = require'otter.keeper'
+--   local main_nr = vim.api.nvim_get_current_buf()
+--   local langs = {}
+--   for i,l in ipairs(otterkeeper.rafts[main_nr].languages) do
+--     langs[i] = i .. ': ' .. l
+--   end
+--   -- promt to choose one of langs
+--   local i = vim.fn.inputlist(langs)
+--   local lang = otterkeeper.rafts[main_nr].languages[i]
+--   local params = {
+--     textDocument = vim.lsp.util.make_text_document_params(),
+--     otter = {
+--       lang = lang
+--     }
+--   }
+--   -- don't pass a handler, as we want otter to use it's own handlers
+--   vim.lsp.buf_request(main_nr, ms.textDocument_documentSymbol, params, nil)
+-- end
 
-local is_code_chunk = function()
-  local current, _ = require('otter.keeper').get_current_language_context()
-  if current then
-    return true
-  else
-    return false
-  end
-end
+-- local is_code_chunk = function()
+--   local current, _ = require('otter.keeper').get_current_language_context()
+--   if current then
+--     return true
+--   else
+--     return false
+--   end
+-- end
 
-local insert_code_chunk = function(lang)
-  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<esc>', true, false, true), 'n', true)
-  local keys
-  if is_code_chunk() then
-    keys = [[o```<cr><cr>```{]] .. lang .. [[}<esc>o]]
-  else
-    keys = [[o```{]] .. lang .. [[}<cr>```<esc>O]]
-  end
-  keys = vim.api.nvim_replace_termcodes(keys, true, false, true)
-  vim.api.nvim_feedkeys(keys, 'n', false)
-end
+-- local insert_code_chunk = function(lang)
+--   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<esc>', true, false, true), 'n', true)
+--   local keys
+--   if is_code_chunk() then
+--     keys = [[o```<cr><cr>```{]] .. lang .. [[}<esc>o]]
+--   else
+--     keys = [[o```{]] .. lang .. [[}<cr>```<esc>O]]
+--   end
+--   keys = vim.api.nvim_replace_termcodes(keys, true, false, true)
+--   vim.api.nvim_feedkeys(keys, 'n', false)
+-- end
 
-local insert_py_chunk = function()
-  insert_code_chunk 'python'
-end
+-- local insert_py_chunk = function()
+--   insert_code_chunk 'python'
+-- end
 
-local insert_lua_chunk = function()
-  insert_code_chunk 'lua'
-end
+-- local insert_lua_chunk = function()
+--   insert_code_chunk 'lua'
+-- end
 
-local insert_julia_chunk = function()
-  insert_code_chunk 'julia'
-end
+-- local insert_julia_chunk = function()
+--   insert_code_chunk 'julia'
+-- end
 
-local insert_bash_chunk = function()
-  insert_code_chunk 'bash'
-end
+-- local insert_bash_chunk = function()
+--   insert_code_chunk 'bash'
+-- end
 
-local insert_ojs_chunk = function()
-  insert_code_chunk 'ojs'
-end
+-- local insert_ojs_chunk = function()
+--   insert_code_chunk 'ojs'
+-- end
 
-vim.keymap.set("n", "<leader>os", get_otter_symbols_lang, {desc = "otter [s]ymbols"})
--- TERMINAL 
-lvim.builtin.which_key.mappings["q"] = {
-  name = "Quarto",
-  E = { ":lua require('otter').export(true)<cr>", "[E]xport with overwrite" },
-  a = { ":QuartoActivate<cr>", "[a]ctivate" },
-  e = { ":lua require('otter').export()<cr>", "[e]xport" },
-  h = { ":QuartoHelp ", "[h]elp" },
-  p = { ":lua require'quarto'.quartoPreview()<cr>", "[p]review" },
-  q = { ":lua require'quarto'.quartoClosePreview()<cr>", "[q]uiet preview" },
-  r = {
-    name = "[r]un",
-    a = { ":QuartoSendAll<cr>", "run [a]ll" },
-    b = { ":QuartoSendBelow<cr>", "run [b]elow" },
-    r = { ":QuartoSendAbove<cr>", "to cu[r]sor" },
-  },
-}
+-- vim.keymap.set("n", "<leader>os", get_otter_symbols_lang, {desc = "otter [s]ymbols"})
+-- -- TERMINAL 
+-- lvim.builtin.which_key.mappings["q"] = {
+--   name = "Quarto",
+--   E = { ":lua require('otter').export(true)<cr>", "[E]xport with overwrite" },
+--   a = { ":QuartoActivate<cr>", "[a]ctivate" },
+--   e = { ":lua require('otter').export()<cr>", "[e]xport" },
+--   h = { ":QuartoHelp ", "[h]elp" },
+--   p = { ":lua require'quarto'.quartoPreview()<cr>", "[p]review" },
+--   q = { ":lua require'quarto'.quartoClosePreview()<cr>", "[q]uiet preview" },
+--   r = {
+--     name = "[r]un",
+--     a = { ":QuartoSendAll<cr>", "run [a]ll" },
+--     b = { ":QuartoSendBelow<cr>", "run [b]elow" },
+--     r = { ":QuartoSendAbove<cr>", "to cu[r]sor" },
+--   },
+-- }
 
--- OTTER
-lvim.builtin.which_key.mappings["o"] = {
- name = "Otter & Code",
- a = { require'otter'.activate, "otter [a]ctivate" },
- b = { insert_bash_chunk, "[b]ash code chunk" },
- c = { "O# %%<cr>", "magic [c]omment code chunk # %%" },
- d = { require'otter'.deactivate, "otter [d]eactivate" },
- j = { insert_julia_chunk, "[j]ulia code chunk" },
- l = { insert_lua_chunk, "[l]lua code chunk" },
- o = { insert_ojs_chunk, "[o]bservable js code chunk" },
- p = { insert_py_chunk, "[p]ython code chunk" },
-}
+-- -- OTTER
+-- lvim.builtin.which_key.mappings["o"] = {
+--  name = "Otter & Code",
+--  a = { require'otter'.activate, "otter [a]ctivate" },
+--  b = { insert_bash_chunk, "[b]ash code chunk" },
+--  c = { "O# %%<cr>", "magic [c]omment code chunk # %%" },
+--  d = { require'otter'.deactivate, "otter [d]eactivate" },
+--  j = { insert_julia_chunk, "[j]ulia code chunk" },
+--  l = { insert_lua_chunk, "[l]lua code chunk" },
+--  o = { insert_ojs_chunk, "[o]bservable js code chunk" },
+--  p = { insert_py_chunk, "[p]ython code chunk" },
+-- }
 
 
-local function mark_terminal()
-  local job_id = vim.b.terminal_job_id
-  vim.print('job_id: ' .. job_id)
-end
+-- local function mark_terminal()
+--   local job_id = vim.b.terminal_job_id
+--   vim.print('job_id: ' .. job_id)
+-- end
 
-local function set_terminal()
-  vim.fn.call('slime#config', {})
-end
+-- local function set_terminal()
+--   vim.fn.call('slime#config', {})
+-- end
 
-lvim.builtin.which_key.mappings["c"] = {
-  name = "[c]ode / [c]ell / [c]hunk",
-  i = { new_terminal_ipython, "new [i]python terminal" },
-  j = { new_terminal_julia, "new [j]ulia terminal" },
-  n = { new_terminal_shell, "[n]ew terminal with shell" },
-  p = { new_terminal_python, "new [p]ython terminal" },
-  m = { mark_terminal, "[m]ark terminal" },
-  s = { set_terminal, "[s]et terminal" },
-}
+-- lvim.builtin.which_key.mappings["c"] = {
+--   name = "[c]ode / [c]ell / [c]hunk",
+--   i = { new_terminal_ipython, "new [i]python terminal" },
+--   j = { new_terminal_julia, "new [j]ulia terminal" },
+--   n = { new_terminal_shell, "[n]ew terminal with shell" },
+--   p = { new_terminal_python, "new [p]ython terminal" },
+--   m = { mark_terminal, "[m]ark terminal" },
+--   s = { set_terminal, "[s]et terminal" },
+-- }
 
--- Enable core plugins
-lvim.builtin.project.active = true
-lvim.builtin.project.silent_chdir = false
+-- -- Enable core plugins
+-- lvim.builtin.project.active = true
+-- lvim.builtin.project.silent_chdir = false
 
-lvim.builtin.nvimtree.setup.update_focused_file =  {
-    enable = true,
-    update_root = true
-  }
+-- lvim.builtin.nvimtree.setup.update_focused_file =  {
+--     enable = true,
+--     update_root = true
+--   }
 
-lvim.colorscheme = "tokyonight"
+-- lvim.colorscheme = "tokyonight"
 
--- Configure `ruff-lsp`.
--- See: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#ruff_lsp
--- For the default config, along with instructions on how to customize the settings
-require('lspconfig').ruff_lsp.setup {
-  init_options = {
-    settings = {
-      -- Any extra CLI arguments for `ruff` go here.
-      args = {},
-    }
-  }
-}
+-- -- Configure `ruff-lsp`.
+-- -- See: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#ruff_lsp
+-- -- For the default config, along with instructions on how to customize the settings
+-- require('lspconfig').ruff_lsp.setup {
+--   init_options = {
+--     settings = {
+--       -- Any extra CLI arguments for `ruff` go here.
+--       args = {},
+--     }
+--   }
+-- }
 
