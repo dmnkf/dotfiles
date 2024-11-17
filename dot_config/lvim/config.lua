@@ -215,9 +215,9 @@ lvim.plugins = {
     "chrisgrieser/nvim-spider", lazy = true
   },
 
-  -- {
-  --   "stevearc/dressing.nvim"
-  -- },
+  {
+    "stevearc/dressing.nvim"
+  },
 
   -- {
   --   "coffebar/transfer.nvim",
