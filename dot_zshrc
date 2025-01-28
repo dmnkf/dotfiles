@@ -12,3 +12,6 @@ source "$HOME/.rye/env"
 [ -s "/Users/dmnk/.bun/_bun" ] && source "/Users/dmnk/.bun/_bun"
 
 eval "$(starship init zsh)"
+
+# Added by Windsurf
+export PATH="/Users/dmnk/.codeium/windsurf/bin:$PATH"
