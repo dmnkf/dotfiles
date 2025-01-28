@@ -68,14 +68,8 @@ require("lazy").setup({
   },
   {  "gbprod/yanky.nvim" },
 
-  { "rlane/pounce.nvim" },
-
 
 })
-
--- Pounce
-map("n", "f", "<cmd>Pounce<CR>")
-map("x", "f", "<cmd>Pounce<CR>")
 
 -- Debug, Rename, Stop, Toggle Distraction Free Mode
 map("n", "<leader>d", "<Cmd>call VSCodeNotify('workbench.action.debug.start')<CR>")
@@ -107,7 +101,7 @@ vim.o.incsearch = true
 
 -- Go to action, file, declaration
 map("n", "<leader>a", "<Cmd>call VSCodeNotify('workbench.action.showCommands')<CR>")
-map("n", "<leader>f", "<Cmd>call VSCodeNotify('workbench.action.quickOpen')<CR>")
+map("n", "f", "<Cmd>call VSCodeNotify('workbench.action.quickOpen')<CR>")
 map("n", "<leader>d", "<Cmd>call VSCodeNotify('editor.action.revealDefinition')<CR>")
 
 -- Back and forward
