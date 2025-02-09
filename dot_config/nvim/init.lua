@@ -72,7 +72,7 @@ require("lazy").setup({
             keymaps = {
               ["af"] = "@function.outer",
               ["if"] = "@function.inner",
-              ["ac"] = "@block.outer",
+              ["ac"] = "@class.outer",
               ["ic"] = "@class.inner",
             },
           },
