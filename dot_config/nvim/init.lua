@@ -47,56 +47,6 @@ vim.opt.rtp:prepend(lazypath)
   -- "yanky.nvim",
 require("lazy").setup({
 
-  -- install treesiter for markdown
-  {
-    "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate",
-    config = function()
-      require("nvim-treesitter.configs").setup({
-        highlight = {
-          enable = true,
-        },
-      })
-    end,
-  },
-
-  -- install treesiter textobjects
-  {
-    "nvim-treesitter/nvim-treesitter-textobjects",
-    run = ":TSUpdate",
-    config = function()
-      require("nvim-treesitter.configs").setup({
-        textobjects = {
-          select = {
-            enable = true,
-            keymaps = {
-              ["af"] = "@function.outer",
-              ["if"] = "@function.inner",
-              ["ac"] = "@class.outer",
-              ["ic"] = "@class.inner",
-            },
-          },
-          swap = {
-            enable = true,
-            swap_next = {
-              ["<leader>a"] = "@parameter.inner",
-            },
-            swap_previous = {
-              ["<leader>A"] = "@parameter.inner",
-            },
-          },
-        },
-      })
-    end,
-  },
-  -- install mini.ai
-  {
-    "echasnovski/mini.ai",
-    config = function()
-      require("mini.ai").setup({
-      })
-    end,
-  },
   {
     "chrisgrieser/nvim-spider",
     keys = {
