@@ -2,7 +2,9 @@
   {
     "context": "Editor && vim_mode == normal && !menu && !VimWaiting",
     "bindings": {
-      "space r": ["task::Spawn", { "task_name": "run '$ZED_FILE'" }]
+      "space r": ["task::Spawn", { "task_name": "run '$ZED_FILE'" }],
+      "f": "file_finder::Toggle",
+      "t": "terminal_panel::ToggleFocus",
     }
   },
   {
