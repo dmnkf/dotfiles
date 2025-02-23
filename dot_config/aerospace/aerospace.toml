@@ -46,7 +46,7 @@ gaps.inner.horizontal = 0
 gaps.inner.vertical =   0
 gaps.outer.left =       0
 gaps.outer.bottom =     0
-gaps.outer.top =        0
+gaps.outer.top =        [{ monitor."main" = 5 }, 40]
 gaps.outer.right =      0
 
 # 'main' binding mode declaration
