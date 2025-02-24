@@ -128,11 +128,11 @@ cmd-alt-ctrl-shift-c = 'reload-config'
 cmd-alt-ctrl-semicolon = 'mode join'
 
 [mode.join.binding]
-esc = [ 'mode main', 'exec-and-forget sketchybar --trigger aerospace_leave_service_mode']
-h = ['join-with left', 'mode main', 'exec-and-forget sketchybar --trigger aerospace_leave_service_mode']
-j = ['join-with down', 'mode main', 'exec-and-forget sketchybar --trigger aerospace_leave_service_mode']
-k = ['join-with up', 'mode main', 'exec-and-forget sketchybar --trigger aerospace_leave_service_mode']
-l = ['join-with right', 'mode main', 'exec-and-forget sketchybar --trigger aerospace_leave_service_mode']
+esc = [ 'mode main']
+h = ['join-with left', 'mode main']
+j = ['join-with down', 'mode main']
+k = ['join-with up', 'mode main']
+l = ['join-with right', 'mode main']
 
 cmd-alt-ctrl-r = 'mode resize'
 
