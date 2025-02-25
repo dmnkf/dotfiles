@@ -16,10 +16,15 @@
           ]
         }
       ]
+    },
+    {
+      "host": "d-intranet01",
+      "username": "root",
+      "projects": []
     }
   ],
   "features": {
-    "inline_completion_provider": "supermaven"
+    "inline_completion_provider": "zed"
   },
   "assistant": {
     "version": "2",
