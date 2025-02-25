@@ -20,11 +20,22 @@
     {
       "host": "d-intranet01",
       "username": "root",
-      "projects": []
+      "projects": [
+        {
+          "paths": [
+            "/home/intranet"
+          ]
+        },
+        {
+          "paths": [
+            "/home/intranet/intranet/intranet"
+          ]
+        }
+      ]
     }
   ],
   "features": {
-    "inline_completion_provider": "zed"
+    "edit_prediction_provider": "zed"
   },
   "assistant": {
     "version": "2",
