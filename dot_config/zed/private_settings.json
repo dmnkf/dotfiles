@@ -41,7 +41,7 @@
     "version": "2",
     "default_model": {
       "provider": "zed.dev",
-      "model": "claude-3-5-sonnet-20241022"
+      "model": "claude-3-7-sonnet-latest"
     }
   },
   "language_models": {
@@ -51,7 +51,7 @@
     }
   },
   "base_keymap": "JetBrains",
-  "theme": "Tokyo Night Storm",
+  "theme": "Ayu Light",
   "vim_mode": true,
   "ui_font_size": 14,
   "buffer_font_size": 14,
