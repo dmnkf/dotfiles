@@ -51,7 +51,11 @@
     }
   },
   "base_keymap": "JetBrains",
-  "theme": "Ayu Light",
+  "theme": {
+      "mode": "system",
+      "light": "Tokyo Night Light",
+      "dark": "Tokyo Night"
+  },
   "vim_mode": true,
   "ui_font_size": 14,
   "buffer_font_size": 14,
