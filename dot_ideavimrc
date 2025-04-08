@@ -31,7 +31,7 @@ map Z <Plug>(multicursor-mci)
 
 let mapleader=" "
 
-map f <Plug>(easymotion-s)
+map F <Plug>(easymotion-s)
 map <leader>e <Plug>(easymotion-f)
 
 map <leader>d <Action>(Debug)
@@ -61,7 +61,7 @@ nnoremap <C-l> <C-w>l
 " Search
 set incsearch
 map <leader>a <Action>(GotoAction)
-map <leader>f <Action>(GotoFile)
+map f <Action>(GotoFile)
 map <leader>d <Action>(GotoDeclaration)
 map gb <Action>(Back)
 map gf <Action>(Forward)
