@@ -227,10 +227,6 @@ if.app-id = 'com.jetbrains.dataspell'
 run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
-if.app-id = 'com.neovide.neovide'
-run = 'move-node-to-workspace 3'
-
-[[on-window-detected]]
 if.app-id = 'com.jetbrains.cwm.guest'
 run = 'move-node-to-workspace 3'
 
@@ -252,7 +248,7 @@ run = 'move-node-to-workspace 3'
 
 # Communication workspace 4
 [[on-window-detected]]
-if.app-id = 'im.beeper'
+if.app-id = 'com.automattic.beeper.desktop'
 run = 'move-node-to-workspace 4'
 
 [[on-window-detected]]
@@ -273,10 +269,10 @@ if.window-title-regex-substring = 'morgen'
 run = 'move-node-to-workspace 5'
 
 
-# Music workspace 6
+# Music workspace has its own
 [[on-window-detected]]
 if.app-id = 'com.spotify.client'
-run = 'move-node-to-workspace 6'
+run = 'move-node-to-workspace s'
 
 [[on-window-detected]]
 if.app-id = 'com.bitwarden.desktop'
