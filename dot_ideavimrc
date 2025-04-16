@@ -31,7 +31,7 @@ map Z <Plug>(multicursor-mci)
 
 let mapleader=" "
 
-map F <Plug>(easymotion-s)
+map f <Plug>(easymotion-s)
 map <leader>e <Plug>(easymotion-f)
 
 map <leader>d <Action>(Debug)
