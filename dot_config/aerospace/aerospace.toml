@@ -155,6 +155,7 @@ esc = 'mode main'
 7 = ['built-in', 'secondary', 'LG.*', 1]
 8 = ['LG.*', 'main']
 9 = ['secondary', 'zowie.*', 3]
+s = ['secondary', 1]
 
 # automation 
 
