@@ -48,8 +48,6 @@ lvim.plugins = {
     "stevearc/dressing.nvim"
   },
 
-
-
   -- -- color html colors
   {
     'NvChad/nvim-colorizer.lua',
