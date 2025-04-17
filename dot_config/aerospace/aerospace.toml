@@ -125,6 +125,8 @@ cmd-alt-ctrl-shift-0 = ['move-node-to-workspace 10', 'workspace 10']
 
 cmd-alt-ctrl-shift-c = 'reload-config'
 
+cmd-alt-ctrl-r = 'mode resize'
+
 cmd-alt-ctrl-semicolon = 'mode join'
 
 [mode.join.binding]
@@ -134,7 +136,6 @@ j = ['join-with down', 'mode main']
 k = ['join-with up', 'mode main']
 l = ['join-with right', 'mode main']
 
-cmd-alt-ctrl-r = 'mode resize'
 
 [mode.resize.binding]
 h = 'resize width -50'
@@ -155,8 +156,8 @@ esc = 'mode main'
 7 = ['built-in', 'secondary', 'LG.*', 1]
 8 = ['LG.*', 'main']
 9 = ['secondary', 'zowie.*', 3]
-s = ['secondary', 1]
-c = ['secondary', 1]
+s = ['zowie.*', 1]
+c = ['zowie.*', 1]
 
 # automation 
 
