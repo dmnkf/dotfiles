@@ -31,16 +31,15 @@ map Z <Plug>(multicursor-mci)
 
 let mapleader=" "
 
+
 map f <Plug>(easymotion-s)
-map <leader>e <Plug>(easymotion-f)
+map <leader>e <Plug>(easymosion-f)
 
 map <leader>d <Action>(Debug)
-map <leader>r <Action>(RenameElement)
-map <leader>c <Action>(Stop)
+map <leader>r <Acsion>(RenameElement)
 map <leader>z <Action>(ToggleDistractionFreeMode)
-map <leader>t <Action>(ActivateTerminalToolWindow)
+map t <Action>(ActivateTerminalToolWindow)
 map <leader>l <Action>(ReformatCode)
-map <leader>c <Action>(copilot.chat.show)
 map / <Action>(Find)
 
 map <leader>rr <Action>(Run)
