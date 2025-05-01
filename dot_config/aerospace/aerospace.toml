@@ -189,20 +189,29 @@ if.app-id = 'com.mitchellh.ghostty'
 run = 'move-node-to-workspace 2'
 
 [[on-window-detected]]
-if.app-id = 'md.obsidian'
+if.app-id = 'com.clickup.desktop-app'
 run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+if.app-id = 'md.obsidian'
+run = 'move-node-to-workspace o'
 
 [[on-window-detected]]
 if.app-id = 'com.postmanlabs.mac'
 run = 'move-node-to-workspace 9'
 
 [[on-window-detected]]
+if.app-id = 'com.axosoft.gitkraken'
+run = 'move-node-to-workspace 10'
+
+[[on-window-detected]]
 if.app-id = 'org.zotero.zotero'
 run = 'move-node-to-workspace z'
 
 [[on-window-detected]]
-if.app-id = 'com.clickup.desktop-app'
+if.app-id = 'com.openai.chat'
 run = 'move-node-to-workspace c'
+
 
 # coding 
 [[on-window-detected]]
@@ -218,27 +227,11 @@ if.app-id = 'com.exafunction.windsurf'
 run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
-if.app-id = 'com.jetbrains.intellij'
+if.app-name-regex-substring='com.jetbrains'
 run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
-if.app-id = 'com.jetbrains.pycharm'
-run = 'move-node-to-workspace 3'
-
-[[on-window-detected]]
-if.app-id = 'com.jetbrains.dataspell'
-run = 'move-node-to-workspace 3'
-
-[[on-window-detected]]
-if.app-id = 'com.jetbrains.cwm.guest'
-run = 'move-node-to-workspace 3'
-
-[[on-window-detected]]
-if.app-id = 'dev.zed.Zed-Nightly'
-run = 'move-node-to-workspace 3'
-
-[[on-window-detected]]
-if.app-id = 'dev.zed.Zed'
+if.app-name-regex-substring='dev.zed.Zed'
 run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
