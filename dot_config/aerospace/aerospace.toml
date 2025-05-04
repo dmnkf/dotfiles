@@ -212,10 +212,9 @@ run = 'move-node-to-workspace z'
 if.app-id = 'com.openai.chat'
 run = 'move-node-to-workspace c'
 
-
 # coding 
 [[on-window-detected]]
-if.app-name-regex-substring = 'jetbrains'
+if.app-id = 'com.jetbrains.intellij'
 run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
@@ -224,10 +223,6 @@ run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
 if.app-id = 'com.exafunction.windsurf'
-run = 'move-node-to-workspace 3'
-
-[[on-window-detected]]
-if.app-name-regex-substring='com.jetbrains'
 run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
