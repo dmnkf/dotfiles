@@ -8,14 +8,6 @@
 {
   "ssh_connections": [
     {
-      "host": "AWS-Server",
-      "projects": [
-        {
-          "paths": ["~/projects"]
-        }
-      ]
-    },
-    {
       "host": "d-intranet01",
       "username": "root",
       "projects": [
@@ -32,6 +24,10 @@
     "edit_prediction_provider": "zed"
   },
   "agent": {
+    "inline_assistant_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-4o"
+    },
     "version": "2",
     "default_model": {
       "provider": "zed.dev",
@@ -81,7 +77,7 @@
   // },
  "languages": {
     "Python": {
-      "language_servers": ["pylsp", "ruff", "!pyright", "..."],
+      "language_servers": ["basedpyright", "pylsp", "ruff", "!pyright", "..."],
       "format_on_save": "on",
       "formatter": [
         {
@@ -97,6 +93,19 @@
     }
   },
   "lsp": {
+    "basedpyright": {
+      "settings": {
+        "python": {
+          "pythonPath": ".venv/bin/python"
+        },
+        "basedpyright.analysis": {
+          "diagnosticMode": "workspace",
+          "inlayHints": {
+            "callArgumentNames": false
+          }
+        }
+      }
+    },
     "pylsp": {
       "settings": {
         "plugins": {
