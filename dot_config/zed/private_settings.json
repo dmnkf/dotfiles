@@ -11,9 +11,7 @@
       "host": "AWS-Server",
       "projects": [
         {
-          "paths": [
-            "~/projects"
-          ]
+          "paths": ["~/projects"]
         }
       ]
     },
@@ -22,14 +20,10 @@
       "username": "root",
       "projects": [
         {
-          "paths": [
-            "/home/intranet"
-          ]
+          "paths": ["/home/intranet"]
         },
         {
-          "paths": [
-            "/home/intranet/intranet/intranet"
-          ]
+          "paths": ["/home/intranet/intranet/intranet"]
         }
       ]
     }
@@ -37,7 +31,7 @@
   "features": {
     "edit_prediction_provider": "zed"
   },
-  "assistant": {
+  "agent": {
     "version": "2",
     "default_model": {
       "provider": "zed.dev",
@@ -52,9 +46,9 @@
   },
   "base_keymap": "JetBrains",
   "theme": {
-      "mode": "system",
-      "light": "Tokyo Night Light",
-      "dark": "Tokyo Night"
+    "mode": "system",
+    "light": "Tokyo Night Light",
+    "dark": "Tokyo Night"
   },
   "vim_mode": true,
   "ui_font_size": 14,
@@ -85,78 +79,77 @@
   //     }
   //   }
   // },
-  "languages": {
-      "Python": {
-        "language_servers": ["pylsp", "ruff", "!pyright", "..."],
-        "format_on_save": "on",
-        "formatter": [
-          {
-            "code_actions": {
-              "source.organizeImports.ruff": true,
-              "source.fixAll.ruff": true
-            }
-          },
-          {
-            "language_server": { "name": "ruff" }
+ "languages": {
+    "Python": {
+      "language_servers": ["pylsp", "ruff", "!pyright", "..."],
+      "format_on_save": "on",
+      "formatter": [
+        {
+          "code_actions": {
+            "source.organizeImports.ruff": true,
+            "source.fixAll.ruff": true
           }
-        ]
+        },
+        {
+          "language_server": { "name": "ruff" }
+        }
+      ]
+    }
+  },
+  "lsp": {
+    "pylsp": {
+      "settings": {
+        "plugins": {
+          // disable plugins superseded by ruff
+          "autopep8": { "enabled": false },
+          "black": { "enabled": false },
+          "flake8": { "enabled": false },
+          "isort": { "enabled": false },
+          "mccabe": { "enabled": false },
+          "pycodestyle": { "enabled": false },
+          "pydocstyle": { "enabled": false },
+          "pyflakes": { "enabled": false },
+          "pylint": { "enabled": false },
+          "yapf": { "enabled": false },
+
+          // keep the others
+          "pylsp_mypy": { "enabled": true },
+          "jedi": { "enabled": true },
+          "rope": { "enabled": true },
+          "rope_autoimport": { "enabled": true },
+          "rope_completion": { "enabled": true },
+
+          // disable pylsp ruff in favor of `ruff server`
+          "ruff": { "enabled": false }
+        }
       }
     },
-    "lsp": {
-      "pylsp": {
+    "ruff": {
+      "initialization_options": {
         "settings": {
-          "plugins": {
-            // disable plugins superseded by ruff
-            "autopep8": { "enabled": false },
-            "black": { "enabled": false },
-            "flake8": { "enabled": false },
-            "isort": { "enabled": false },
-            "mccabe": { "enabled": false },
-            "pycodestyle": { "enabled": false },
-            "pydocstyle": { "enabled": false },
-            "pyflakes": { "enabled": false },
-            "pylint": { "enabled": false },
-            "yapf": { "enabled": false },
-
-            // keep the others
-            "pylsp_mypy": { "enabled": true },
-            "jedi": { "enabled": true },
-            "rope": { "enabled": true },
-            "rope_autoimport": { "enabled": true },
-            "rope_completion": { "enabled": true },
-
-            // disable pylsp ruff in favor of `ruff server`
-            "ruff": { "enabled": false }
-          }
-        }
-      },
-      "ruff": {
-        "initialization_options": {
-          "settings": {
-            "configurationPreference": "filesystemFirst",
-            "configuration": {
-              "format": {
-                "quote-style": "double",
-                "skip-magic-trailing-comma": false
-              }
-            },
-            "codeAction": {
-              "disableRuleComment": { "enable": false },
-              "fixViolation": { "enable": true }
-            },
-            "lint": {
-              "select": ["E4", "E7", "E9", "F"],
-              "extendSelect": ["I"],
-              "enable": true
-            },
+          "configurationPreference": "filesystemFirst",
+          "configuration": {
             "format": {
-              "preview": true
-            },
-            "fixAll": true,
-            "organizeImports": true,
-            "showSyntaxErrors": true,
-            "lineLength": 100
-          }
+              "quote-style": "double",
+              "skip-magic-trailing-comma": false
+            }
+          },
+          "codeAction": {
+            "disableRuleComment": { "enable": false },
+            "fixViolation": { "enable": true }
+          },
+          "lint": {
+            "select": ["E4", "E7", "E9", "F"],
+            "extendSelect": ["I"],
+            "enable": true
+          },
+          "format": {
+            "preview": true
+          },
+          "fixAll": true,
+          "organizeImports": true,
+          "showSyntaxErrors": true,
+          "lineLength": 100
         }
       }
     }
