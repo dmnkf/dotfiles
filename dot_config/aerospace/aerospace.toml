@@ -230,6 +230,10 @@ if.app-name-regex-substring='dev.zed.Zed'
 run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
+if.app-name-regex-substring='dev.zed.Zed-Preview'
+run = 'move-node-to-workspace 3'
+
+[[on-window-detected]]
 if.app-id = 'com.visualstudio.code.oss'
 run = 'move-node-to-workspace 3'
 
