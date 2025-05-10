@@ -25,8 +25,8 @@
   },
   "agent": {
     "inline_assistant_model": {
-      "provider": "copilot_chat",
-      "model": "gpt-4o"
+      "provider": "zed.dev",
+      "model": "claude-3-7-sonnet-latest"
     },
     "version": "2",
     "default_model": {
@@ -54,6 +54,15 @@
       "milliseconds": 100
     }
   },
+  "diagnostics": {
+    "inline": {
+      "enabled": true,
+      "update_debounce_ms": 150,
+      "padding": 4,
+      "min_column": 0,
+      "max_severity": null
+    }
+  },
   "terminal": {
     "detect_venv": {
       "on": {
@@ -76,8 +85,11 @@
   //   }
   // },
  "languages": {
+   "TOML": {
+     "language_servers": ["!Taplo"]
+   },
     "Python": {
-      "language_servers": ["basedpyright", "pylsp", "ruff", "!pyright", "..."],
+      "language_servers": ["basedpyright", "ruff", "!pyright", "..."],
       "format_on_save": "on",
       "formatter": [
         {
@@ -129,7 +141,7 @@
           "rope_completion": { "enabled": true },
 
           // disable pylsp ruff in favor of `ruff server`
-          "ruff": { "enabled": false }
+          // "ruff": { "enabled": false }
         }
       }
     },
