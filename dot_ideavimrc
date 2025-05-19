@@ -32,11 +32,10 @@ map Z <Plug>(multicursor-mci)
 let mapleader=" "
 
 
-map f <Plug>(easymotion-s)
-map <leader>e <Plug>(easymosion-f)
+map F <Plug>(easymotion-s)
 
 map <leader>d <Action>(Debug)
-map <leader>r <Acsion>(RenameElement)
+map <leader>r <Action>(RenameElement)
 map <leader>z <Action>(ToggleDistractionFreeMode)
 map t <Action>(ActivateTerminalToolWindow)
 map <leader>l <Action>(ReformatCode)
