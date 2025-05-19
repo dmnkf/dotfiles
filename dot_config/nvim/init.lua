@@ -46,7 +46,6 @@ vim.opt.rtp:prepend(lazypath)
   -- "vim-repeat",
   -- "yanky.nvim",
 require("lazy").setup({
-
   {
     "chrisgrieser/nvim-spider",
     keys = {
@@ -68,8 +67,11 @@ require("lazy").setup({
     },
   },
   {  "gbprod/yanky.nvim" },
-
-
+  { "antonk52/bad-practices.nvim",
+    setup = function()
+      require("bad-practices.nvim").setup({})
+    end,
+  }
 })
 
 -- Debug, Rename, Stop, Toggle Distraction Free Mode
