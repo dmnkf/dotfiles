@@ -11,6 +11,7 @@ source "$HOME/.rye/env"
 # bun completions
 [ -s "/Users/dmnk/.bun/_bun" ] && source "/Users/dmnk/.bun/_bun"
 
+eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
 
 # Added by Windsurf
