@@ -5,6 +5,9 @@
       "space r": ["task::Spawn", { "task_name": "run '$ZED_FILE'" }],
       "f": "file_finder::Toggle",
       "t": "terminal_panel::ToggleFocus",
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "space p": "projects::OpenRecent"
     }
   },
   {
@@ -20,13 +23,14 @@
     "bindings": {
       "space o": "file_finder::Toggle",
       "space t": "terminal_panel::ToggleFocus",
-      "space f": "file_finder::Toggle"
+      "space f": "file_finder::Toggle",
+      "space p": "projects::OpenRecent"
     }
   },
   {
     "bindings": {
       "cmd-p": "command_palette::Toggle",
-      "cmd-l": "assistant::ToggleFocus",
+      "cmd-l": "agent::ToggleFocus",
       "cmd-[": "pane::GoBack",
       "cmd-]": "pane::GoForward",
       "cmd-i": "assistant::InlineAssist",
@@ -42,9 +46,11 @@
     }
   },
   {
-    "context": "AssistantPanel",
+    "context": "AgentPanel",
     "bindings": {
-      "cmd-n": "agent::NewThread"
+      "cmd-n": "agent::NewThread",
+      "cmd-w": "workspace::CloseActiveDock",
+      "cmd-l": "workspace::CloseActiveDock"
     }
   }
  

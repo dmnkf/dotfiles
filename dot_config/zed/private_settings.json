@@ -30,8 +30,8 @@
     },
     "version": "2",
     "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-3-7-sonnet-latest"
+      "provider": "copilot_chat",
+      "model": "gpt-4.1"
     }
   },
   "language_models": {
