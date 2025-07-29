@@ -26,17 +26,18 @@
   "agent": {
     "inline_assistant_model": {
       "provider": "zed.dev",
-      "model": "claude-3-7-sonnet-latest"
+      "model": ""
     },
     "default_model": {
-      "provider": "copilot_chat",
-      "model": "gpt-4.1"
+      "provider": "google",
+      "model": "gemini-2.5-pro"
     }
   },
   "base_keymap": "JetBrains",
+  "buffer_font_family": "JetBrains Mono",
   "theme": {
     "mode": "system",
-    "light": "One Light",
+    "light": "Tokyo Night Light",
     "dark": "Tokyo Night"
   },
   "vim_mode": true,
