@@ -28,22 +28,15 @@
       "provider": "zed.dev",
       "model": "claude-3-7-sonnet-latest"
     },
-    "version": "2",
     "default_model": {
       "provider": "copilot_chat",
       "model": "gpt-4.1"
     }
   },
-  "language_models": {
-    "anthropic": {
-      "version": "1",
-      "low_speed_timeout_in_seconds": 60
-    }
-  },
   "base_keymap": "JetBrains",
   "theme": {
     "mode": "system",
-    "light": "Tokyo Night Light",
+    "light": "One Light",
     "dark": "Tokyo Night"
   },
   "vim_mode": true,

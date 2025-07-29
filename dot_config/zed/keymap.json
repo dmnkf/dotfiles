@@ -52,6 +52,29 @@
       "cmd-w": "workspace::CloseActiveDock",
       "cmd-l": "workspace::CloseActiveDock"
     }
+  },
+  {
+    "context": "(((((((((((AgentPanel || GitPanel) || ProjectPanel) || CollabPanel) || OutlinePanel) || ChatPanel) || VimControl) || EmptyPane) || SharedScreen) || MarkdownPreview) || KeyContextView) || DebugPanel)",
+    "bindings": {
+      "alt-h": "workspace::ActivatePaneLeft"
+    }
+  },
+  {
+    "context": "(((((((((((AgentPanel || GitPanel) || ProjectPanel) || CollabPanel) || OutlinePanel) || ChatPanel) || VimControl) || EmptyPane) || SharedScreen) || MarkdownPreview) || KeyContextView) || DebugPanel)",
+    "bindings": {
+      "alt-k": "workspace::ActivatePaneUp"
+    }
+  },
+  {
+    "context": "(((((((((((AgentPanel || GitPanel) || ProjectPanel) || CollabPanel) || OutlinePanel) || ChatPanel) || VimControl) || EmptyPane) || SharedScreen) || MarkdownPreview) || KeyContextView) || DebugPanel)",
+    "bindings": {
+      "alt-l": "workspace::ActivatePaneRight"
+    }
+  },
+  {
+    "context": "(((((((((((AgentPanel || GitPanel) || ProjectPanel) || CollabPanel) || OutlinePanel) || ChatPanel) || VimControl) || EmptyPane) || SharedScreen) || MarkdownPreview) || KeyContextView) || DebugPanel)",
+    "bindings": {
+      "alt-j": "workspace::ActivatePaneDown"
+    }
   }
- 
 ]
