@@ -226,11 +226,11 @@ if.app-id = 'com.exafunction.windsurf'
 run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
-if.app-name-regex-substring='dev.zed.Zed'
+if.app-id ='dev.zed.Zed'
 run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
-if.app-name-regex-substring='dev.zed.Zed-Preview'
+if.app-id ='dev.zed.Zed-Preview'
 run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
