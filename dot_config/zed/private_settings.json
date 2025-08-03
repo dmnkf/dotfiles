@@ -64,7 +64,7 @@
         // Default directories to search for virtual environments, relative
         // to the current working directory. We recommend overriding this
         // in your project's settings, rather than globally.
-        "directories": [".venv", "venv"],
+        "directories": [".venv", "venv", "api/.venv"],
         // Can also be `csh`, `fish`, and `nushell`
         "activate_script": "default"
       }
