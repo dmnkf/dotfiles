@@ -26,12 +26,12 @@
   "agent": {
     "always_allow_tool_actions": true,
     "inline_assistant_model": {
-      "provider": "zed.dev",
-      "model": ""
+      "provider": "google",
+      "model": "gemini-2.5-pro"
     },
     "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-sonnet-4-thinking"
+      "provider": "google",
+      "model": "gemini-2.5-pro"
     }
   },
   "base_keymap": "JetBrains",
@@ -39,7 +39,7 @@
   "theme": {
     "mode": "system",
     "light": "One Light",
-    "dark": "One Dark"
+    "dark": "One Dark Pro"
   },
   "vim_mode": true,
   "ui_font_size": 14,
@@ -64,7 +64,7 @@
         // Default directories to search for virtual environments, relative
         // to the current working directory. We recommend overriding this
         // in your project's settings, rather than globally.
-        "directories": [".venv", "venv", "api/.venv"],
+        "directories": [".venv", "venv", "**/.venv"],
         // Can also be `csh`, `fish`, and `nushell`
         "activate_script": "default"
       }
@@ -75,7 +75,7 @@
       "language_servers": ["!Taplo"]
     },
     "Python": {
-      "language_servers": ["basedpyright", "ruff", "!pyright", "..."],
+      "language_servers": ["pyrefly", "ruff"],
       "format_on_save": "on",
       "formatter": [
         {
@@ -88,46 +88,30 @@
           "language_server": { "name": "ruff" }
         }
       ]
+    },
+    "Vue.js": {
+      "language_servers": ["!eslint", "..."]
     }
   },
   "lsp": {
-    "basedpyright": {
+    "pyrefly": {
       "settings": {
-        "python": {
-          "pythonPath": ".venv/bin/python"
+        "diagnostics": {
+          "enabled": true,
+          "updateOnType": true
         },
-        "basedpyright.analysis": {
-          "diagnosticMode": "workspace",
-          "inlayHints": {
-            "callArgumentNames": false
-          }
-        }
-      }
-    },
-    "pylsp": {
-      "settings": {
-        "plugins": {
-          // disable plugins superseded by ruff
-          "autopep8": { "enabled": false },
-          "black": { "enabled": false },
-          "flake8": { "enabled": false },
-          "isort": { "enabled": false },
-          "mccabe": { "enabled": false },
-          "pycodestyle": { "enabled": false },
-          "pydocstyle": { "enabled": false },
-          "pyflakes": { "enabled": false },
-          "pylint": { "enabled": false },
-          "yapf": { "enabled": false },
-
-          // keep the others
-          "pylsp_mypy": { "enabled": true },
-          "jedi": { "enabled": true },
-          "rope": { "enabled": true },
-          "rope_autoimport": { "enabled": true },
-          "rope_completion": { "enabled": true }
-
-          // disable pylsp ruff in favor of `ruff server`
-          // "ruff": { "enabled": false }
+        "codeLens": {
+          "enabled": true
+        },
+        "hover": {
+          "enabled": true
+        },
+        "completion": {
+          "enabled": true,
+          "triggerCharacters": [".", "(", "[", "{", " "]
+        },
+        "inlayHints": {
+          "enabled": true
         }
       }
     },
@@ -135,18 +119,11 @@
       "initialization_options": {
         "settings": {
           "configurationPreference": "filesystemFirst",
-          "configuration": {
-            "format": {
-              "quote-style": "double",
-              "skip-magic-trailing-comma": false
-            }
-          },
           "codeAction": {
-            "disableRuleComment": { "enable": false },
             "fixViolation": { "enable": true }
           },
           "lint": {
-            "select": ["E4", "E7", "E9", "F"],
+            "select": ["E", "F", "I", "E4", "E7", "E9"],
             "extendSelect": ["I"],
             "enable": true
           },

@@ -13,17 +13,12 @@
   {
     "context": "Editor && vim_mode == visual && !menu && !VimWaiting",
     "bindings": {
-      "space r": ["task::Spawn", { "task_name": "execute selection" }],
-      "space l": "assistant::QuoteSelection",
-      "cmd-l": "assistant::QuoteSelection"
+      "space r": ["task::Spawn", { "task_name": "execute selection" }]
     }
-  }, 
+  },
   {
     "context": "Editor && VimControl && !VimWaiting && !menu",
     "bindings": {
-      "space o": "file_finder::Toggle",
-      "space t": "terminal_panel::ToggleFocus",
-      "space f": "file_finder::Toggle",
       "space p": "projects::OpenRecent"
     }
   },
@@ -40,7 +35,6 @@
   {
     "context": "Terminal",
     "bindings": {
-      "escape": "terminal_panel::ToggleFocus",
       "cmd-t": "workspace::NewTerminal",
       "cmd-n": "workspace::NewTerminal"
     }
@@ -75,6 +69,47 @@
     "context": "(((((((((((AgentPanel || GitPanel) || ProjectPanel) || CollabPanel) || OutlinePanel) || ChatPanel) || VimControl) || EmptyPane) || SharedScreen) || MarkdownPreview) || KeyContextView) || DebugPanel)",
     "bindings": {
       "alt-j": "workspace::ActivatePaneDown"
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "cmd-g b": "git::Branch"
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "cmd-g g": "git::Pull"
+    }
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      "cmd-g": null
+    }
+  },
+  {
+    "context": "ContextEditor > Editor",
+    "bindings": {
+      "cmd-g": null
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "escape": ["terminal::SendKeystroke", "escape"]
+    }
+  },
+  {
+    "bindings": {
+      "cmd-shift-m": "workspace::ToggleZoom"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "space l": "editor::Format"
     }
   }
 ]
