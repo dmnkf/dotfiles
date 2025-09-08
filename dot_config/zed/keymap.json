@@ -17,7 +17,7 @@
     }
   },
   {
-    "context": "Editor && VimControl && !VimWaiting && !menu",
+    "context": "Editor && VimControl && !VimWaiting && !menu && vim_mode != insert",
     "bindings": {
       "space p": "projects::OpenRecent"
     }
@@ -104,12 +104,6 @@
   {
     "bindings": {
       "cmd-shift-m": "workspace::ToggleZoom"
-    }
-  },
-  {
-    "context": "Editor",
-    "bindings": {
-      "space l": "editor::Format"
     }
   }
 ]
