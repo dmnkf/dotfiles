@@ -105,5 +105,17 @@
     "bindings": {
       "cmd-shift-m": "workspace::ToggleZoom"
     }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "cmd-g cmd-g": "git_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-shift-g": null
+    }
   }
 ]

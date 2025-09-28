@@ -6,6 +6,9 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "project_panel": {
+    "hide_gitignore": false
+  },
   "ssh_connections": [
     {
       "host": "d-intranet01",
@@ -34,7 +37,6 @@
       "model": "gemini-2.5-pro"
     }
   },
-  "base_keymap": "JetBrains",
   "buffer_font_family": "JetBrains Mono",
   "theme": {
     "mode": "system",

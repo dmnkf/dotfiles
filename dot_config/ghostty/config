@@ -1,6 +1,3 @@
-theme = tokyonight-storm
-
-
 keybind = ctrl+d=new_split:right
 macos-option-as-alt = left
 
