@@ -21,6 +21,7 @@ export PATH="/Users/dmnk/.codeium/windsurf/bin:$PATH"
 
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
+eval "$(mcfly init zsh)"
 
 # opencode
 export PATH=/Users/dmnk/.opencode/bin:$PATH
