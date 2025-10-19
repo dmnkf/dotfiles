@@ -69,8 +69,8 @@ gaps.outer.right =      0
 
 # See: https://nikitabobko.github.io/AeroSpace/commands.html#layout
 # Reference: https://github.com/i3/i3/blob/next/etc/config
-enable-normalization-flatten-containers = false
-enable-normalization-opposite-orientation-for-nested-containers = false
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
 
 [mode.main.binding]
 cmd-alt-ctrl-enter = 'exec-and-forget open -n /Applications/ghostty.app' 
