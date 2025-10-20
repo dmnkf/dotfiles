@@ -273,4 +273,7 @@ run = 'move-node-to-workspace s'
 if.app-id = 'com.bitwarden.desktop'
 run = 'layout floating'
 
+[[on-window-detected]]
+if.app-id = 'com.chabomakers.Antinote'
+run = 'layout floating'
 
