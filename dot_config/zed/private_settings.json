@@ -77,15 +77,9 @@
       "language_servers": ["!Taplo"]
     },
     "Python": {
-      "language_servers": ["pyrefly", "ruff"],
+      "language_servers": ["ty", "pyrefly", "ruff", "!basedpyright"],
       "format_on_save": "on",
       "formatter": [
-        {
-          "code_actions": {
-            "source.organizeImports.ruff": true,
-            "source.fixAll.ruff": true
-          }
-        },
         {
           "language_server": { "name": "ruff" }
         }
