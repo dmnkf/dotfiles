@@ -14,6 +14,11 @@ after-login-command = []
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands.html
 after-startup-command = []
 
+exec-on-workspace-change = [
+    '/bin/bash', '-c',
+    '~/.config/aerospace/sticky-move.sh',
+]
+
 # Start AeroSpace at login
 start-at-login = true
 
