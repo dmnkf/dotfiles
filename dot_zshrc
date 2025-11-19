@@ -26,3 +26,6 @@ eval "$(mcfly init zsh)"
 # opencode
 export PATH=/Users/dmnk/.opencode/bin:$PATH
 export PATH="$HOME/.local/bin:$PATH"
+
+# Added by Antigravity
+export PATH="/Users/dmnk/.antigravity/antigravity/bin:$PATH"
