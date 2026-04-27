@@ -6,7 +6,26 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "icon_theme": "Zed (Default)",
+  "agent_servers": {
+    "codex-acp": {
+      "type": "registry"
+    },
+    "claude-acp": {
+      "type": "registry"
+    }
+  },
+  "outline_panel": {
+    "dock": "right"
+  },
+  "collaboration_panel": {
+    "dock": "right"
+  },
+  "git_panel": {
+    "dock": "right"
+  },
   "project_panel": {
+    "dock": "right",
     "hide_gitignore": false
   },
   "ssh_connections": [
@@ -27,6 +46,7 @@
     "edit_prediction_provider": "zed"
   },
   "agent": {
+    "dock": "left",
     "always_allow_tool_actions": true,
     "inline_assistant_model": {
       "provider": "google",
@@ -39,7 +59,7 @@
   },
   "buffer_font_family": "JetBrains Mono",
   "theme": {
-    "mode": "system",
+    "mode": "dark",
     "light": "One Light",
     "dark": "One Dark Pro"
   },
