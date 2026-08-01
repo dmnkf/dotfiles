@@ -283,6 +283,10 @@ if.app-id = 'com.bitwarden.desktop'
 run = 'layout floating'
 
 [[on-window-detected]]
+if.app-id = 'com.colliderli.iina'
+run = 'layout floating'
+
+[[on-window-detected]]
 if.app-id = 'com.chabomakers.Antinote'
 run = 'layout floating'
 
